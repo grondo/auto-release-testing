@@ -5,7 +5,7 @@ script:
 - make
 before_deploy:
   - make release
-  - awk '/^##/{n++};n<=1' NEWS > ReleaseNotes
+  - awk '/^##/{n++};n<=1' NEWS > ReleaseNotes.md
   - export RELEASE=$(echo release*.gz)
 deploy:
   provider: releases
