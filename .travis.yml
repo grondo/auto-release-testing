@@ -5,7 +5,7 @@ script:
 - make
 before_deploy:
   - make release
-  - awk '/^##/{n++};n<=1' NEWS > ReleaseNotes.md
+  - awk '/^##/{n++};n<=1' NEWS.d > ReleaseNotes.md
   - export RELEASE=$(echo release*.gz)
 deploy:
   provider: releases
@@ -15,7 +15,7 @@ deploy:
   file:
     - $RELEASE
   prerelease: true
-  body: "[ReleaseNotes](https://github.com/${TRAVIS_REPO_SLUG}/tree/${TRAVIS_TAG}/NEWS)"
+  body: "[ReleaseNotes](https://github.com/${TRAVIS_REPO_SLUG}/tree/${TRAVIS_TAG}/NEWS.md)"
   on:
     tags: true
     repo: grondo/auto-release-testing
