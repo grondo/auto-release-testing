@@ -5,14 +5,18 @@ script:
 - make
 before_deploy:
   - make release
-  - export RELNOTES=$(awk '/^##/{n++};n<=1' NEWS)
+  - awk '/^##/{n++};n<=1' NEWS > ReleaseNotes
+  - export RELEASE=$(echo release*.gz)
 deploy:
   provider: releases
+  skip_cleanup: true
   api_key:
     secure: CZ/yGeszTobP9JezuovjU9k59IDlkCuaxU8EW7F0tlm6WiNe6UvMc5lZvfqMo7Fn2VtY3DHanL4xBdduRwe6VL8PQn9AP0LvxiMPSbUbverjNso3oG8KcuDZSbvFF/DUmvsgHH16ZCLLg8LYsDfbiZ9M7rK4CWM22FPWkZS2Mwhrw50cy2TjEyThiWN/elik+trKCDvsgM+wl8E2hY8ehF+C43RhBZvmbpdMNGm5KgmADGcILqiz7KZeC7M+83Oz+fvIfxZ9e5BO/GESewP8cka5KnO/JSWE8ldVReruyVDfT3oSShFRq5axtPIJMlj44sjxqd2ecKve91adId9eWSxfyNGv2xCHBk3vm9I6miYasgEXRB0vGPsERfM2RBuUSIdzv4LgFL/fdwLJl1YNWXajGk4iSXGiVPfy2IVh4z+7G5UBDga/WWvf7u1F4AMge5H5UZgSpzFknSZsNlx4tDafbyHCD7y3nDvJLayvgQwwU9edmVkJh6pw4m0t1UvHmZdXYCGVoukAkCnMsKp5L7m49F0qTLc0WbTxkvWRX8tg2en6itpqPl7v0UMrgk/BxN44xYbjUzTSZik5LD8Vta0xU4uJ4FL9GlC7FTz3FIksaNESaf2W1C12jpPRbeu7K+y8HpEzHG/vK/V9HT06OoJdQsFOyj/d0jXW4QwqeYI=
-  file: release.tar.gz
+  file:
+    - $RELEASE
+    - ReleaseNotes
   prerelease: true
-  body: $RELNOTES
+#  body: $RELNOTES
   on:
     tags: true
     repo: grondo/auto-release-testing
