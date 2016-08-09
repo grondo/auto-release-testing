@@ -15,7 +15,7 @@ deploy:
   file:
     - $RELEASE
   prerelease: true
-  body: "View the [Release Notes](https://github.com/${TRAVIS_REPO_SLUG}/${TRAVIS_TAG}/NEWS.md)"
+  body: "View the [Release Notes](https://github.com/${TRAVIS_REPO_SLUG}/blob/${TRAVIS_TAG}/NEWS.md) for ${TRAVIS_TAG}"
   on:
     tags: true
     repo: grondo/auto-release-testing
