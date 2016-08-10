@@ -1,5 +1,9 @@
 This file contains Release Notes for various versions of auto-release-testing
 
+auto-release v0.0.17
+--------------------
+ - switch to travis env vars
+
 auto-release v0.0.15
 --------------------
  - Fix TRAVIS_BUILD_NUMBER usage

@@ -24,6 +24,6 @@ deploy:
     - $RELEASE
   prerelease: true
   on:
-    condition: $BUILDID = 1
+    condition: $TRAVIS_JOB_NUMBER = $TRAVIS_BUILD_NUMBER.1
     tags: true
     repo: grondo/auto-release-testing
