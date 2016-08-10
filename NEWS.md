@@ -1,5 +1,13 @@
 This file contains Release Notes for various versions of auto-release-testing
 
+auto-release v0.0.15
+--------------------
+ - Fix TRAVIS_BUILD_NUMBER usage
+
+auto-release v0.0.15
+--------------------
+ - Add condition for TRAVIS_BUILD_NUMBER to deploy section of `.travis.yml`
+
 auto-release v0.0.14
 --------------------
  - Updated URI for NEWS.md

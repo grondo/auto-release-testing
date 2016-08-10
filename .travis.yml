@@ -1,14 +1,18 @@
 language: c
 compiler:
 - gcc
+- clang
 script:
 - make
+- export BUILDID=${TRAVIS_JOB_NUMBER##*.}
+- env
 before_deploy:
   - make release
   - awk '/^##/{n++};n<=1' NEWS.md > ReleaseNotes.md
   - export RELEASE=$(echo release*.gz)
   - export ANCHOR=$(sed -n '/^auto-release v[0-9]/{s/\.//g; s/\s/-/gp;Q}' NEWS.md)
   - export TAG_URI="https://github.com/${TRAVIS_REPO_SLUG}/blob/${TRAVIS_TAG}"
+  - env
 
 deploy:
   provider: releases
@@ -20,5 +24,6 @@ deploy:
     - $RELEASE
   prerelease: true
   on:
+    condition: $BUILDID = 1
     tags: true
     repo: grondo/auto-release-testing
