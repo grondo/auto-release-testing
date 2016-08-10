@@ -15,6 +15,7 @@ deploy:
   file:
     - $RELEASE
   prerelease: true
+  draft: true
   body: "View the [Release Notes](https://github.com/${TRAVIS_REPO_SLUG}/blob/${TRAVIS_TAG}/NEWS.md) for ${TRAVIS_TAG}"
   on:
     tags: true
