@@ -1,5 +1,9 @@
 This file contains Release Notes for various versions of auto-release-testing
 
+auto-release v0.0.14
+--------------------
+ - Updated URI for NEWS.md
+
 auto-release v0.0.13
 --------------------
 
